@@ -1,4 +1,13 @@
 import { Star, Quote } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 const reviews = [
   {
@@ -19,6 +28,24 @@ const reviews = [
     service: "Tile & Grout",
     body: "Our kitchen grout looked brand new. Friendly team, fair pricing, no chemical smell. We'll book Sparkletic every year from now on.",
   },
+  {
+    name: "James O'Connor",
+    location: "Scarborough",
+    service: "Carpet Cleaning",
+    body: "Booked Sparkletic after seeing the reviews — lived up to every one. Old wine stains gone, no trace. Highly recommend to anyone in Perth.",
+  },
+  {
+    name: "Amelia Rossi",
+    location: "Cottesloe",
+    service: "Rug Cleaning",
+    body: "They picked up our Persian rug, cleaned it beautifully and returned it in two days. Genuinely caring team who know their craft.",
+  },
+  {
+    name: "Tom Baker",
+    location: "Mandurah",
+    service: "Vacate Cleaning",
+    body: "Stress-free end-of-lease clean. Agent signed off first inspection. Worth every dollar — will use again for our next move.",
+  },
 ];
 
 const platforms = [
@@ -28,6 +55,8 @@ const platforms = [
 ];
 
 export function Testimonials() {
+  const autoplay = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
+
   return (
     <section className="relative overflow-hidden bg-gradient-hero py-24 text-primary-foreground lg:py-32">
       <div className="pointer-events-none absolute inset-0 opacity-60 bg-gradient-glow" />
@@ -60,30 +89,41 @@ export function Testimonials() {
           ))}
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {reviews.map((r, i) => (
-            <figure
-              key={r.name}
-              className="relative flex flex-col rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all hover:bg-white/10"
-              style={{ animationDelay: `${i * 80}ms` }}
-            >
-              <Quote className="h-7 w-7 text-accent" />
-              <blockquote className="mt-5 flex-1 text-base leading-relaxed text-primary-foreground/90">
-                "{r.body}"
-              </blockquote>
-              <div className="mt-6 flex items-center gap-1 text-accent">
-                {[...Array(5)].map((_, j) => (
-                  <Star key={j} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <figcaption className="mt-4 border-t border-white/10 pt-4">
-                <p className="font-semibold">{r.name}</p>
-                <p className="text-xs text-primary-foreground/60">
-                  {r.location} · {r.service}
-                </p>
-              </figcaption>
-            </figure>
-          ))}
+        <div className="relative mt-12 px-0 md:px-14">
+          <Carousel
+            opts={{ align: "start", loop: true }}
+            plugins={[autoplay.current]}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {reviews.map((r) => (
+                <CarouselItem
+                  key={r.name}
+                  className="pl-4 md:basis-1/2 lg:basis-1/3"
+                >
+                  <figure className="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all hover:bg-white/10">
+                    <Quote className="h-7 w-7 text-accent" />
+                    <blockquote className="mt-5 flex-1 text-base leading-relaxed text-primary-foreground/90">
+                      "{r.body}"
+                    </blockquote>
+                    <div className="mt-6 flex items-center gap-1 text-accent">
+                      {[...Array(5)].map((_, j) => (
+                        <Star key={j} className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                    <figcaption className="mt-4 border-t border-white/10 pt-4">
+                      <p className="font-semibold">{r.name}</p>
+                      <p className="text-xs text-primary-foreground/60">
+                        {r.location} · {r.service}
+                      </p>
+                    </figcaption>
+                  </figure>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0 h-11 w-11 border-white/20 bg-white/10 text-primary-foreground hover:bg-accent hover:text-accent-foreground md:-left-2" />
+            <CarouselNext className="right-0 h-11 w-11 border-white/20 bg-white/10 text-primary-foreground hover:bg-accent hover:text-accent-foreground md:-right-2" />
+          </Carousel>
         </div>
       </div>
     </section>
