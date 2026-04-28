@@ -59,25 +59,25 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
             No obligation · We'll be in touch shortly.
           </p>
 
-          <div className={compact ? "mt-5 space-y-3" : "mt-6 space-y-4"}>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div>
-                <Label htmlFor="name" className="sr-only">Name</Label>
-                <Input id="name" name="name" placeholder="Your name" required className="h-12 rounded-xl" />
+          <div className={compact ? "mt-5 space-y-3.5" : "mt-6 space-y-4"}>
+            <div className="grid gap-3.5 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <Label htmlFor="name" className="text-xs font-semibold text-foreground/80">Full name</Label>
+                <Input id="name" name="name" placeholder="e.g. Sarah Mitchell" required className="h-12 rounded-xl" />
               </div>
-              <div>
-                <Label htmlFor="phone" className="sr-only">Phone</Label>
-                <Input id="phone" name="phone" placeholder="Phone number" required className="h-12 rounded-xl" />
+              <div className="space-y-1.5">
+                <Label htmlFor="phone" className="text-xs font-semibold text-foreground/80">Phone</Label>
+                <Input id="phone" name="phone" placeholder="04xx xxx xxx" required className="h-12 rounded-xl" />
               </div>
             </div>
-            <div>
-              <Label htmlFor="email" className="sr-only">Email</Label>
-              <Input id="email" name="email" type="email" placeholder="Email address" required className="h-12 rounded-xl" />
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className="text-xs font-semibold text-foreground/80">Email address</Label>
+              <Input id="email" name="email" type="email" placeholder="you@email.com" required className="h-12 rounded-xl" />
             </div>
-            <div>
-              <Label htmlFor="service" className="sr-only">Service</Label>
+            <div className="space-y-1.5">
+              <Label htmlFor="service" className="text-xs font-semibold text-foreground/80">Service needed</Label>
               <Select name="service">
-                <SelectTrigger className="h-12 rounded-xl">
+                <SelectTrigger id="service" className="h-12 rounded-xl">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
@@ -88,9 +88,9 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
               </Select>
             </div>
             {!compact && (
-              <div>
-                <Label htmlFor="msg" className="sr-only">Details</Label>
-                <Textarea id="msg" name="msg" placeholder="Tell us about your project (optional)" className="min-h-[96px] rounded-xl" />
+              <div className="space-y-1.5">
+                <Label htmlFor="msg" className="text-xs font-semibold text-foreground/80">Project details</Label>
+                <Textarea id="msg" name="msg" placeholder="Tell us about your property, rooms, and any specific concerns..." className="min-h-[110px] rounded-xl" />
               </div>
             )}
             <Button type="submit" variant="hero" size="lg" className="w-full" disabled={loading}>
