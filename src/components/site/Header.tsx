@@ -14,7 +14,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
+      <div className="mx-auto flex h-18 max-w-screen-2xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
         <Link to="/" className="group flex items-center gap-2.5">
           <span className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-primary-glow transition-transform group-hover:rotate-6">
             <Sparkles className="h-5 w-5" strokeWidth={2.4} />
