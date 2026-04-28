@@ -33,7 +33,7 @@ export function Testimonials() {
       <div className="pointer-events-none absolute inset-0 opacity-60 bg-gradient-glow" />
       <div className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-accent/20 blur-[120px]" />
 
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="relative mx-auto max-w-screen-2xl px-6 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-accent">
             Testimonials

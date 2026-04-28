@@ -20,7 +20,7 @@ const perks = [
 export function Equipment() {
   return (
     <section className="relative overflow-hidden bg-background py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto max-w-screen-2xl px-6 lg:px-12 xl:px-16">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">

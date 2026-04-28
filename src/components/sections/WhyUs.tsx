@@ -13,7 +13,7 @@ export function WhyUs() {
   return (
     <section className="relative overflow-hidden bg-muted/40 py-24 lg:py-32">
       <div className="pointer-events-none absolute inset-0 grid-pattern opacity-40" />
-      <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="relative mx-auto max-w-screen-2xl px-6 lg:px-12 xl:px-16">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.4fr] lg:items-end">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">

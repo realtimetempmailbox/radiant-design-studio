@@ -17,7 +17,7 @@ const items = [
 export function Transformations() {
   return (
     <section className="relative bg-background py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto max-w-screen-2xl px-6 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary">
             Real Results

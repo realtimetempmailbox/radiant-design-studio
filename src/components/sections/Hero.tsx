@@ -20,7 +20,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -right-40 top-1/3 h-[600px] w-[600px] rounded-full bg-accent/20 blur-[140px] animate-blob" />
       <div className="pointer-events-none absolute -left-40 bottom-0 h-[500px] w-[500px] rounded-full bg-primary-foreground/10 blur-[120px] animate-blob" />
 
-      <div className="relative mx-auto max-w-7xl px-5 pb-20 pt-14 text-primary-foreground lg:px-8 lg:pb-28 lg:pt-20">
+      <div className="relative mx-auto max-w-screen-2xl px-5 pb-20 pt-14 text-primary-foreground lg:px-8 lg:pb-28 lg:pt-20">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div className="animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium backdrop-blur">

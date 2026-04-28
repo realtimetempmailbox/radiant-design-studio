@@ -17,7 +17,7 @@ export function Footer() {
         <div className="absolute -left-40 top-10 h-96 w-96 rounded-full bg-accent/30 blur-[120px] animate-blob" />
         <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-primary/40 blur-[120px] animate-blob" />
       </div>
-      <div className="relative mx-auto max-w-7xl px-5 py-20 lg:px-8">
+      <div className="relative mx-auto max-w-screen-2xl px-5 py-20 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2.5">
