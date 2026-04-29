@@ -1,60 +1,59 @@
-import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+"use client";
 import { useRef } from "react";
+import { Link } from "@tanstack/react-router";
 import Autoplay from "embla-carousel-autoplay";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
-import carpet from "@/assets/service-carpet.jpg";
-import vacate from "@/assets/service-vacate.jpg";
-import tile from "@/assets/service-tile.jpg";
-import rug from "@/assets/service-rug.jpg";
-import upholstery from "@/assets/service-upholstery.jpg";
-import window from "@/assets/service-window.jpg";
 
 const services = [
   {
     title: "Carpet Cleaning",
-    img: carpet,
-    desc: "Professional high-pressure steam cleaning for all carpet types. Eco-friendly solutions safe for family and pets.",
-    tags: ["Steam Cleaning", "Eco-Friendly", "Bond-Back"],
+    desc: "Deep steam cleaning that removes stains, allergens and odours from all carpet types.",
+    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop",
+    tags: ["Steam Clean", "Stain Removal", "Deodorise"],
     popular: true,
   },
   {
     title: "Vacate Cleaning",
-    img: vacate,
-    desc: "Comprehensive end-of-lease cleaning with 100% bond-back guarantee. Everything agents check.",
-    tags: ["Bond Guarantee", "Full Property", "Same-Day"],
-    popular: true,
+    desc: "Bond-back guaranteed end-of-lease cleans covering every corner of your property.",
+    img: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=600&auto=format&fit=crop",
+    tags: ["Bond Back", "Full Property", "Guaranteed"],
+    popular: false,
   },
   {
-    title: "Tile & Grout",
-    img: tile,
-    desc: "Restore tiles and grout to their original glory. Deep cleaning that removes years of grime.",
-    tags: ["Deep Extraction", "Grout Restoration", "Sealing"],
-  },
-  {
-    title: "Rug Cleaning",
-    img: rug,
-    desc: "Specialist rug cleaning for delicate and valuable rugs. Wool, silk, Persian — we handle it all.",
-    tags: ["All Rug Types", "Gentle", "On-Site"],
+    title: "Tile & Grout Cleaning",
+    desc: "High-pressure cleaning that restores tiles and grout lines to like-new condition.",
+    img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&auto=format&fit=crop",
+    tags: ["High Pressure", "Grout Restore", "Sealing"],
+    popular: false,
   },
   {
     title: "Upholstery Cleaning",
-    img: upholstery,
-    desc: "Refresh sofas, chairs and fabric furniture. Remove stains, odours and allergens.",
-    tags: ["Stain Removal", "Odour Treatment", "Fabric Protection"],
+    desc: "Safe, effective cleaning for sofas, chairs and fabric furniture of all kinds.",
+    img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&auto=format&fit=crop",
+    tags: ["Sofa", "Fabric Safe", "Deodorise"],
+    popular: false,
+  },
+  {
+    title: "Rug Cleaning",
+    desc: "Specialist rug cleaning for all materials including wool, silk and synthetic.",
+    img: "https://images.unsplash.com/photo-1600166898405-da9535204843?w=600&auto=format&fit=crop",
+    tags: ["All Materials", "Colour Safe", "Hand Wash"],
+    popular: false,
   },
   {
     title: "Window Cleaning",
-    img: window,
-    desc: "Crystal-clear windows inside and out. Streak-free results for homes and commercial properties.",
-    tags: ["Streak-Free", "Inside & Out", "Screen Cleaning"],
+    desc: "Streak-free window cleaning for residential and commercial properties in Perth.",
+    img: "https://images.unsplash.com/photo-1527515545081-5db817172677?w=600&auto=format&fit=crop",
+    tags: ["Streak Free", "Inside & Out", "High Rise"],
+    popular: false,
   },
 ];
 
@@ -69,7 +68,8 @@ export function Services() {
             Our services
           </p>
           <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-            Professional cleaning for <span className="text-gradient">every need</span>
+            Professional cleaning for{" "}
+            <span className="text-gradient">every need</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
             From carpet cleaning to window washing, we deliver sparkling results
@@ -106,8 +106,12 @@ export function Services() {
                     </div>
 
                     <div className="flex flex-1 flex-col p-6">
-                      <h3 className="font-display text-xl font-bold">{s.title}</h3>
-                      <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.desc}</p>
+                      <h3 className="font-display text-xl font-bold">
+                        {s.title}
+                      </h3>
+                      <p className="mt-2 flex-1 text-sm text-muted-foreground">
+                        {s.desc}
+                      </p>
                       <div className="mt-4 flex flex-wrap gap-1.5">
                         {s.tags.map((t) => (
                           <span
