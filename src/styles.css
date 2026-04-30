@@ -1,3 +1,11 @@
+@keyframes blink-accent {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent); filter: brightness(1); }
+  50% { box-shadow: 0 0 16px 6px var(--accent); filter: brightness(1.15); }
+}
+
+.blink-accent {
+  animation: blink-accent 1.2s infinite;
+}
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";

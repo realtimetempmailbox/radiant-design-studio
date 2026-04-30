@@ -3,9 +3,19 @@ import { Phone, Menu, X, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
+
+const serviceLinks = [
+  { to: "/services/carpet-cleaning", label: "Carpet Cleaning" },
+  { to: "/services/vacate-cleaning", label: "Vacate Cleaning" },
+  { to: "/services/tile-grout-cleaning", label: "Tile & Grout Cleaning" },
+  { to: "/services/rug-cleaning", label: "Rug Cleaning" },
+  { to: "/services/upholstery-cleaning", label: "Upholstery Cleaning" },
+  { to: "/services/window-cleaning", label: "Window Cleaning" },
+];
+
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
+  { to: "/services", label: "Services", dropdown: serviceLinks },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -26,17 +36,41 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {nav.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              activeProps={{ className: "!text-foreground !bg-muted" }}
-              activeOptions={{ exact: n.to === "/" }}
-            >
-              {n.label}
-            </Link>
-          ))}
+          {nav.map((n) =>
+            n.dropdown ? (
+              <div key={n.to} className="relative group">
+                <Link
+                  to={n.to}
+                  className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  activeProps={{ className: "!text-foreground !bg-muted" }}
+                  activeOptions={{ exact: n.to === "/" }}
+                >
+                  {n.label}
+                </Link>
+                <div className="absolute left-0 top-full z-10 hidden min-w-[220px] rounded-lg border border-border bg-background py-2 shadow-lg group-hover:block">
+                  {n.dropdown.map((d) => (
+                    <Link
+                      key={d.to}
+                      to={d.to}
+                      className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                    >
+                      {d.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={n.to}
+                to={n.to}
+                className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                activeProps={{ className: "!text-foreground !bg-muted" }}
+                activeOptions={{ exact: n.to === "/" }}
+              >
+                {n.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
@@ -49,7 +83,7 @@ export function Header() {
             </span>
             <span className="hidden lg:inline">(08) 6261 5940</span>
           </a>
-          <Button asChild variant="hero">
+          <Button asChild variant="hero" className="blink-accent">
             <Link to="/contact">Get Free Quote</Link>
           </Button>
         </div>
@@ -76,7 +110,7 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
-            <Button asChild variant="hero" className="mt-2">
+            <Button asChild variant="hero" className="mt-2 blink-accent">
               <Link to="/contact" onClick={() => setOpen(false)}>
                 Get Free Quote
               </Link>
