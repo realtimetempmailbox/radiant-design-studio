@@ -61,7 +61,12 @@ export function Header() {
               >
                 <button
                   type="button"
-                  className="inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className={[
+                    "inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    servicesOpen
+                      ? "bg-emerald-100/80 text-emerald-900"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                  ].join(" ")}
                   aria-haspopup="menu"
                   aria-expanded={servicesOpen}
                   onClick={() => setServicesOpen((v) => !v)}
@@ -72,26 +77,31 @@ export function Header() {
                   }}
                 >
                   Services
-                  <ChevronDown className="h-4 w-4 transition-transform" style={{ transform: servicesOpen ? "rotate(180deg)" : undefined }} />
+                  <ChevronDown className={["h-4 w-4 transition-transform", servicesOpen ? "rotate-180" : ""].join(" ")} />
                 </button>
 
                 {servicesOpen && (
                   <div
                     role="menu"
-                    className="absolute left-0 top-full mt-3 w-[320px] overflow-hidden rounded-2xl border border-border bg-background shadow-elegant"
+                    className="absolute left-1/2 top-full z-50 w-[280px] -translate-x-1/2 overflow-visible pt-3"
                   >
-                    <div className="p-2">
-                      {serviceDropdown.map((label) => (
-                        <Link
-                          key={label}
-                          to="/services"
-                          role="menuitem"
-                          className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-foreground/90 transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                          onClick={() => setServicesOpen(false)}
-                        >
-                          <span>{label}</span>
-                        </Link>
-                      ))}
+                    {/* caret */}
+                    <div className="pointer-events-none absolute top-2 left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 rounded-[4px] border border-border bg-background shadow-sm" />
+
+                    <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-elegant">
+                      <div className="p-2">
+                        {serviceDropdown.map((label) => (
+                          <Link
+                            key={label}
+                            to="/services"
+                            role="menuitem"
+                            className="flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-emerald-50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                            onClick={() => setServicesOpen(false)}
+                          >
+                            <span>{label}</span>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
