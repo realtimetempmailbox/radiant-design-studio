@@ -1,11 +1,27 @@
-import { Check } from "lucide-react";
+import { Check, Droplets, Wind, ShieldCheck, Sparkles } from "lucide-react";
 import van from "@/assets/service-van.jpg";
 
 const features = [
-  { title: "True Steam Cleaning", desc: "Heats water to 200°F+ for genuine steam extraction." },
-  { title: "Superior Suction Power", desc: "Truck-mounted vacuum removes more dirt and moisture." },
-  { title: "Faster Drying", desc: "Powerful extraction means carpets dry in hours, not days." },
-  { title: "Deep Sanitisation", desc: "High temperatures kill bacteria, dust mites and allergens." },
+  {
+    icon: Droplets,
+    title: "True Steam Cleaning",
+    desc: "Heats water to 200°F+ for genuine steam extraction",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Superior Suction Power",
+    desc: "Truck-mounted vacuum removes more dirt and moisture",
+  },
+  {
+    icon: Wind,
+    title: "Faster Drying",
+    desc: "Powerful extraction means carpets dry in hours, not days",
+  },
+  {
+    icon: Sparkles,
+    title: "Deep Sanitisation",
+    desc: "High temperatures kill bacteria, dust mites and allergens",
+  },
 ];
 
 const perks = [
@@ -19,17 +35,21 @@ const perks = [
 
 export function Equipment() {
   return (
-    <section className="relative overflow-hidden bg-background py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-muted/40 py-24 lg:py-32">
       <div className="mx-auto max-w-screen-2xl px-6 lg:px-12 xl:px-16">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-              Professional equipment
-            </p>
-            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
-              Powered by <span className="text-gradient">Sapphire Scientific 570</span> truck mount
+            <span className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600/15 text-emerald-700">
+                <Sparkles className="h-3.5 w-3.5" />
+              </span>
+              Professional Equipment
+            </span>
+            <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">
+              Powered by <span className="text-gradient">Sapphire Scientific 570</span>
+              <br className="hidden sm:block" /> Truck Mount
             </h2>
-            <p className="mt-5 text-lg text-muted-foreground">
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
               We invest in the best equipment so you get the best results. Our
               truck-mounted Sapphire Scientific 570 delivers true
               high-temperature steam cleaning — not just hot water extraction
@@ -40,13 +60,33 @@ export function Equipment() {
               {features.map((f) => (
                 <div
                   key={f.title}
-                  className="rounded-2xl border border-border bg-gradient-card p-5 shadow-sm hover-lift"
+                  className="rounded-2xl border border-border bg-card p-5 shadow-sm"
                 >
-                  <h3 className="font-display text-base font-bold">{f.title}</h3>
-                  <p className="mt-1.5 text-sm text-muted-foreground">{f.desc}</p>
+                  <div className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-sm">
+                      <f.icon className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <h3 className="text-sm font-bold">{f.title}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                        {f.desc}.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
+
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {perks.map((p) => (
+                <li key={p} className="flex items-start gap-2 text-sm">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-600/15 text-emerald-700">
+                    <Check className="h-3 w-3" strokeWidth={3} />
+                  </span>
+                  <span className="text-foreground/80">{p}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="relative">
@@ -58,25 +98,20 @@ export function Equipment() {
                 loading="lazy"
                 className="aspect-[4/3] w-full object-cover"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary via-primary/80 to-transparent p-7 text-primary-foreground">
-                <h3 className="font-display text-2xl font-bold">Sapphire Scientific 570</h3>
-                <p className="mt-1 text-sm text-primary-foreground/75">
-                  Industry-leading truck-mounted steam cleaning system
-                </p>
-              </div>
             </div>
 
-            <div className="mt-5 rounded-3xl border border-border bg-gradient-card p-6 shadow-sm">
-              <ul className="grid gap-2.5 sm:grid-cols-2">
-                {perks.map((p) => (
-                  <li key={p} className="flex items-start gap-2 text-sm">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                      <Check className="h-3 w-3" strokeWidth={3} />
-                    </span>
-                    <span className="text-foreground/80">{p}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="pointer-events-none absolute bottom-4 left-4 right-4">
+              <div className="flex items-start gap-3 rounded-2xl border border-border bg-card/95 p-4 shadow-md backdrop-blur">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-white">
+                  <Droplets className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="text-sm font-bold">Sapphire Scientific 570</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    Industry-leading truck-mounted steam cleaning system
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
