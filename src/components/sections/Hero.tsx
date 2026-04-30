@@ -29,7 +29,7 @@ export function Hero() {
             </span>
 
             <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-              Perth's Trusted Dhruvish <br />
+              Perth's Trusted <br />
               <span className="text-gradient">Carpet Cleaning</span> <br />
               Experts
             </h1>
