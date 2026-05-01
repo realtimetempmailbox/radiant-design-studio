@@ -1,10 +1,21 @@
-import React from 'react';
+import { createFileRoute } from "@tanstack/react-router";
+import { ServicePage } from "@/components/services/ServicePage";
+import { SERVICES_CONTENT } from "@/content/services";
 
-export default function UpholsteryCleaning() {
-  return (
-    <div>
-      <h1>Upholstery Cleaning</h1>
-      <p>Refresh your sofas, chairs, and fabric furniture. Remove stains, odours, and allergens for a healthier living space.</p>
-    </div>
-  );
+const content = SERVICES_CONTENT["upholstery-cleaning"];
+
+export const Route = createFileRoute("/services/upholstery-cleaning")({
+  head: () => ({
+    meta: [
+      { title: content.metaTitle },
+      { name: "description", content: content.metaDescription },
+      { property: "og:title", content: content.metaTitle },
+      { property: "og:description", content: content.metaDescription },
+    ],
+  }),
+  component: UpholsteryCleaningPage,
+});
+
+function UpholsteryCleaningPage() {
+  return <ServicePage slug="upholstery-cleaning" />;
 }

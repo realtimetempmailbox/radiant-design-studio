@@ -1,10 +1,21 @@
-import React from 'react';
+import { createFileRoute } from "@tanstack/react-router";
+import { ServicePage } from "@/components/services/ServicePage";
+import { SERVICES_CONTENT } from "@/content/services";
 
-export default function TileGroutCleaning() {
-  return (
-    <div>
-      <h1>Tile & Grout Cleaning</h1>
-      <p>Restore your tiles and grout to their original glory. Deep cleaning that removes years of built-up grime and discolouration.</p>
-    </div>
-  );
+const content = SERVICES_CONTENT["tile-grout-cleaning"];
+
+export const Route = createFileRoute("/services/tile-grout-cleaning")({
+  head: () => ({
+    meta: [
+      { title: content.metaTitle },
+      { name: "description", content: content.metaDescription },
+      { property: "og:title", content: content.metaTitle },
+      { property: "og:description", content: content.metaDescription },
+    ],
+  }),
+  component: TileGroutCleaningPage,
+});
+
+function TileGroutCleaningPage() {
+  return <ServicePage slug="tile-grout-cleaning" />;
 }

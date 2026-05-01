@@ -13,6 +13,13 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as ServicesWindowCleaningRouteImport } from './routes/services/window-cleaning'
+import { Route as ServicesVacateCleaningRouteImport } from './routes/services/vacate-cleaning'
+import { Route as ServicesUpholsteryCleaningRouteImport } from './routes/services/upholstery-cleaning'
+import { Route as ServicesTileGroutCleaningRouteImport } from './routes/services/tile-grout-cleaning'
+import { Route as ServicesRugCleaningRouteImport } from './routes/services/rug-cleaning'
+import { Route as ServicesCarpetCleaningRouteImport } from './routes/services/carpet-cleaning'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -34,39 +41,129 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesWindowCleaningRoute = ServicesWindowCleaningRouteImport.update({
+  id: '/window-cleaning',
+  path: '/window-cleaning',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesVacateCleaningRoute = ServicesVacateCleaningRouteImport.update({
+  id: '/vacate-cleaning',
+  path: '/vacate-cleaning',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesUpholsteryCleaningRoute =
+  ServicesUpholsteryCleaningRouteImport.update({
+    id: '/upholstery-cleaning',
+    path: '/upholstery-cleaning',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesTileGroutCleaningRoute =
+  ServicesTileGroutCleaningRouteImport.update({
+    id: '/tile-grout-cleaning',
+    path: '/tile-grout-cleaning',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesRugCleaningRoute = ServicesRugCleaningRouteImport.update({
+  id: '/rug-cleaning',
+  path: '/rug-cleaning',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCarpetCleaningRoute = ServicesCarpetCleaningRouteImport.update({
+  id: '/carpet-cleaning',
+  path: '/carpet-cleaning',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/carpet-cleaning': typeof ServicesCarpetCleaningRoute
+  '/services/rug-cleaning': typeof ServicesRugCleaningRoute
+  '/services/tile-grout-cleaning': typeof ServicesTileGroutCleaningRoute
+  '/services/upholstery-cleaning': typeof ServicesUpholsteryCleaningRoute
+  '/services/vacate-cleaning': typeof ServicesVacateCleaningRoute
+  '/services/window-cleaning': typeof ServicesWindowCleaningRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/services/carpet-cleaning': typeof ServicesCarpetCleaningRoute
+  '/services/rug-cleaning': typeof ServicesRugCleaningRoute
+  '/services/tile-grout-cleaning': typeof ServicesTileGroutCleaningRoute
+  '/services/upholstery-cleaning': typeof ServicesUpholsteryCleaningRoute
+  '/services/vacate-cleaning': typeof ServicesVacateCleaningRoute
+  '/services/window-cleaning': typeof ServicesWindowCleaningRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/carpet-cleaning': typeof ServicesCarpetCleaningRoute
+  '/services/rug-cleaning': typeof ServicesRugCleaningRoute
+  '/services/tile-grout-cleaning': typeof ServicesTileGroutCleaningRoute
+  '/services/upholstery-cleaning': typeof ServicesUpholsteryCleaningRoute
+  '/services/vacate-cleaning': typeof ServicesVacateCleaningRoute
+  '/services/window-cleaning': typeof ServicesWindowCleaningRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/services/carpet-cleaning'
+    | '/services/rug-cleaning'
+    | '/services/tile-grout-cleaning'
+    | '/services/upholstery-cleaning'
+    | '/services/vacate-cleaning'
+    | '/services/window-cleaning'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/services'
-  id: '__root__' | '/' | '/about' | '/contact' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/carpet-cleaning'
+    | '/services/rug-cleaning'
+    | '/services/tile-grout-cleaning'
+    | '/services/upholstery-cleaning'
+    | '/services/vacate-cleaning'
+    | '/services/window-cleaning'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/services/carpet-cleaning'
+    | '/services/rug-cleaning'
+    | '/services/tile-grout-cleaning'
+    | '/services/upholstery-cleaning'
+    | '/services/vacate-cleaning'
+    | '/services/window-cleaning'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -99,14 +196,87 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/window-cleaning': {
+      id: '/services/window-cleaning'
+      path: '/window-cleaning'
+      fullPath: '/services/window-cleaning'
+      preLoaderRoute: typeof ServicesWindowCleaningRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/vacate-cleaning': {
+      id: '/services/vacate-cleaning'
+      path: '/vacate-cleaning'
+      fullPath: '/services/vacate-cleaning'
+      preLoaderRoute: typeof ServicesVacateCleaningRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/upholstery-cleaning': {
+      id: '/services/upholstery-cleaning'
+      path: '/upholstery-cleaning'
+      fullPath: '/services/upholstery-cleaning'
+      preLoaderRoute: typeof ServicesUpholsteryCleaningRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/tile-grout-cleaning': {
+      id: '/services/tile-grout-cleaning'
+      path: '/tile-grout-cleaning'
+      fullPath: '/services/tile-grout-cleaning'
+      preLoaderRoute: typeof ServicesTileGroutCleaningRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/rug-cleaning': {
+      id: '/services/rug-cleaning'
+      path: '/rug-cleaning'
+      fullPath: '/services/rug-cleaning'
+      preLoaderRoute: typeof ServicesRugCleaningRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/carpet-cleaning': {
+      id: '/services/carpet-cleaning'
+      path: '/carpet-cleaning'
+      fullPath: '/services/carpet-cleaning'
+      preLoaderRoute: typeof ServicesCarpetCleaningRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
+
+interface ServicesRouteChildren {
+  ServicesCarpetCleaningRoute: typeof ServicesCarpetCleaningRoute
+  ServicesRugCleaningRoute: typeof ServicesRugCleaningRoute
+  ServicesTileGroutCleaningRoute: typeof ServicesTileGroutCleaningRoute
+  ServicesUpholsteryCleaningRoute: typeof ServicesUpholsteryCleaningRoute
+  ServicesVacateCleaningRoute: typeof ServicesVacateCleaningRoute
+  ServicesWindowCleaningRoute: typeof ServicesWindowCleaningRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesCarpetCleaningRoute: ServicesCarpetCleaningRoute,
+  ServicesRugCleaningRoute: ServicesRugCleaningRoute,
+  ServicesTileGroutCleaningRoute: ServicesTileGroutCleaningRoute,
+  ServicesUpholsteryCleaningRoute: ServicesUpholsteryCleaningRoute,
+  ServicesVacateCleaningRoute: ServicesVacateCleaningRoute,
+  ServicesWindowCleaningRoute: ServicesWindowCleaningRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

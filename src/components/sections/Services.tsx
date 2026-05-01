@@ -140,7 +140,7 @@ export function Services() {
         </div>
 
         <div className="mt-12 flex justify-center">
-          <Button asChild variant="hero" size="lg">
+          <Button asChild variant="hero" size="lg" className="blink-accent">
             <Link to="/contact">Get a free quote for any service</Link>
           </Button>
         </div>

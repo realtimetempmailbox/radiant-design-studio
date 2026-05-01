@@ -22,7 +22,7 @@ export function FinalCta() {
               professional eco-friendly cleaning you can trust.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Button asChild variant="dark" size="xl">
+              <Button asChild variant="dark" size="xl" className="blink-accent">
                 <Link to="/contact">Get free quote</Link>
               </Button>
               <Button asChild variant="outline" size="xl">

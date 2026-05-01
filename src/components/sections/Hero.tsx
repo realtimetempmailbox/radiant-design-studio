@@ -41,7 +41,7 @@ export function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button asChild variant="hero" size="xl">
+              <Button asChild variant="hero" size="xl" className="blink-accent">
                 <Link to="/contact">
                   Get your free quote
                   <Sparkles className="h-4 w-4" />

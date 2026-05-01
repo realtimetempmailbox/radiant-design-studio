@@ -1,10 +1,21 @@
-import React from 'react';
+import { createFileRoute } from "@tanstack/react-router";
+import { ServicePage } from "@/components/services/ServicePage";
+import { SERVICES_CONTENT } from "@/content/services";
 
-export default function CarpetCleaning() {
-  return (
-    <div>
-      <h1>Carpet Cleaning</h1>
-      <p>Professional high-pressure steam cleaning for all carpet types. No harsh chemicals, eco-friendly solutions that are safe for your family and pets.</p>
-    </div>
-  );
+const content = SERVICES_CONTENT["carpet-cleaning"];
+
+export const Route = createFileRoute("/services/carpet-cleaning")({
+  head: () => ({
+    meta: [
+      { title: content.metaTitle },
+      { name: "description", content: content.metaDescription },
+      { property: "og:title", content: content.metaTitle },
+      { property: "og:description", content: content.metaDescription },
+    ],
+  }),
+  component: CarpetCleaningPage,
+});
+
+function CarpetCleaningPage() {
+  return <ServicePage slug="carpet-cleaning" />;
 }

@@ -93,7 +93,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
                 <Textarea id="msg" name="msg" placeholder="Tell us about your property, rooms, and any specific concerns..." className="min-h-[110px] rounded-xl" />
               </div>
             )}
-            <Button type="submit" variant="hero" size="lg" className="w-full" disabled={loading}>
+            <Button type="submit" variant="hero" size="lg" className="w-full blink-accent" disabled={loading}>
               {loading ? "Sending..." : "Get my free quote"} <ArrowRight className="h-4 w-4" />
             </Button>
             <p className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
