@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { SectionHeadingBadge } from "@/components/site/SectionHeadingBadge";
 import {
   ShieldCheck,
   Leaf,
@@ -45,13 +46,11 @@ export function WhyUs() {
       <div className="pointer-events-none absolute inset-0 grid-pattern opacity-40" />
       <div className="relative mx-auto max-w-screen-2xl px-6 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center rounded-full bg-muted px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-            Why choose us
-          </span>
+          <SectionHeadingBadge icon={Sparkles}>Why choose us</SectionHeadingBadge>
           <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">
             Perth's most <span className="text-gradient">trusted</span> carpet cleaners
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground md:text-base">
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
             We're not just cleaners — we're your partners in maintaining a spotless, healthy home.
             Here's what sets Sparkletic apart.
           </p>
@@ -62,13 +61,13 @@ export function WhyUs() {
           {topTiles.map((it) => (
             <article
               key={it.title}
-              className="rounded-2xl border border-border bg-card px-6 py-7 text-center shadow-sm"
+              className="rounded-2xl border border-border bg-card px-6 py-8 text-center shadow-sm"
             >
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-primary-glow">
+              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-sm">
                 <it.icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-4 text-sm font-bold">{it.title}</h3>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{it.desc}</p>
+              <h3 className="mt-5 text-base font-bold leading-snug md:text-lg">{it.title}</h3>
+              <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground md:text-base">{it.desc}</p>
             </article>
           ))}
         </div>
@@ -78,18 +77,20 @@ export function WhyUs() {
           {featureCards.map((c) => (
             <article
               key={c.title}
-              className="rounded-3xl border border-border bg-card p-8 shadow-sm hover-lift"
+              className="rounded-3xl border border-border bg-card p-8 shadow-sm hover-lift md:p-9"
             >
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-primary-glow">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-sm">
                   <c.icon className="h-5 w-5" />
                 </div>
-                <h3 className="font-display text-xl font-bold leading-tight">{c.title}</h3>
+                <h3 className="flex min-h-[3.6rem] items-center font-display text-xl font-bold leading-tight md:text-2xl">
+                  {c.title}
+                </h3>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{c.desc}</p>
               <Link
                 to={c.to}
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-foreground"
+                className="mt-6 inline-flex items-center gap-2 text-base font-semibold text-emerald-700 hover:text-emerald-900 dark:text-emerald-400 dark:hover:text-emerald-300"
               >
                 Learn more <ArrowRight className="h-4 w-4" />
               </Link>
@@ -100,3 +101,4 @@ export function WhyUs() {
     </section>
   );
 }
+

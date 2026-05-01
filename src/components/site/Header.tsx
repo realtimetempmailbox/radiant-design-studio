@@ -135,7 +135,7 @@ export function Header() {
           <Button
             asChild
             variant="hero"
-            className="blink-accent bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-[0_16px_40px_rgba(16,185,129,0.35)] hover:shadow-[0_22px_60px_rgba(16,185,129,0.45)] hover:brightness-105"
+            className="blink-accent quote-cta-header"
           >
             <Link to="/contact">Get Free Quote</Link>
           </Button>
@@ -204,7 +204,7 @@ export function Header() {
             <Button
               asChild
               variant="hero"
-              className="mt-2 blink-accent bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-[0_16px_40px_rgba(16,185,129,0.35)] hover:shadow-[0_22px_60px_rgba(16,185,129,0.45)] hover:brightness-105"
+              className="mt-2 blink-accent quote-cta-header"
             >
               <Link to="/contact" onClick={() => setOpen(false)}>
                 Get Free Quote

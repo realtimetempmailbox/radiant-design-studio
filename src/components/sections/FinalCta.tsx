@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Phone, Sparkles } from "lucide-react";
+import { SectionHeadingBadge } from "@/components/site/SectionHeadingBadge";
 
 export function FinalCta() {
   return (
@@ -10,14 +11,11 @@ export function FinalCta() {
           <span className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-blob" />
           <span className="pointer-events-none absolute -bottom-10 -left-20 h-64 w-64 rounded-full bg-primary/30 blur-3xl animate-blob" />
           <div className="relative text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-accent-foreground/20 bg-accent-foreground/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest">
-              <Sparkles className="h-3.5 w-3.5" />
-              Ready when you are
-            </span>
+            <SectionHeadingBadge icon={Sparkles} variant="accent">Ready when you are</SectionHeadingBadge>
             <h2 className="mt-6 font-display text-4xl font-bold md:text-5xl lg:text-6xl">
               Ready for spotless carpets?
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base text-accent-foreground/80 md:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base text-accent-foreground/92 md:text-lg md:leading-relaxed">
               Get your free quote today. No obligation, just honest pricing and
               professional eco-friendly cleaning you can trust.
             </p>
@@ -38,3 +36,4 @@ export function FinalCta() {
     </section>
   );
 }
+

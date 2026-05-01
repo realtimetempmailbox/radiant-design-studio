@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { SectionHeadingBadge } from "@/components/site/SectionHeadingBadge";
 import { Button } from "@/components/ui/button";
 import type { ServiceSlug } from "@/content/services";
 import { SERVICES_CONTENT, SERVICES_ORDER } from "@/content/services";
@@ -17,13 +18,11 @@ export function ServicePage({ slug }: { slug: ServiceSlug }) {
         <section className="relative overflow-hidden bg-gradient-hero py-24 text-primary-foreground lg:py-28">
           <div className="pointer-events-none absolute inset-0 opacity-60 bg-gradient-glow" />
           <div className="relative mx-auto max-w-5xl px-5 text-center lg:px-8">
-            <p className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent">
-              {service.eyebrow}
-            </p>
+            <SectionHeadingBadge icon={Sparkles} variant="dark">{service.eyebrow}</SectionHeadingBadge>
             <h1 className="mt-6 font-display text-5xl font-bold md:text-6xl">
               {service.title}
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-lg text-primary-foreground/75">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-primary-foreground/88">
               {service.heroDescription}
             </p>
             <Button asChild variant="hero" size="lg" className="mt-8 blink-accent">
@@ -106,3 +105,4 @@ export function ServicePage({ slug }: { slug: ServiceSlug }) {
     </div>
   );
 }
+

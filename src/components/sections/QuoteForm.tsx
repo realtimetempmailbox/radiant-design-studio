@@ -52,8 +52,12 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
               Free quote
             </p>
           </div>
-          <h3 className="mt-2 font-display text-2xl font-bold md:text-3xl">
-            Get your <span className="text-gradient">FREE</span> quote
+          <h3 className="mt-2 font-display text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            Get your{" "}
+            <span className="inline-flex items-center rounded-md bg-accent px-2 py-0.5 text-accent-foreground shadow-sm">
+              FREE
+            </span>{" "}
+            quote
           </h3>
           <p className="mt-1 text-sm text-muted-foreground">
             No obligation · We'll be in touch shortly.
@@ -93,7 +97,7 @@ export function QuoteForm({ compact = false }: { compact?: boolean }) {
                 <Textarea id="msg" name="msg" placeholder="Tell us about your property, rooms, and any specific concerns..." className="min-h-[110px] rounded-xl" />
               </div>
             )}
-            <Button type="submit" variant="hero" size="lg" className="w-full blink-accent" disabled={loading}>
+            <Button type="submit" variant="hero" size="lg" className="w-full blink-accent quote-cta-form" disabled={loading}>
               {loading ? "Sending..." : "Get my free quote"} <ArrowRight className="h-4 w-4" />
             </Button>
             <p className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">

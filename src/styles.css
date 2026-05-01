@@ -1,10 +1,22 @@
 @keyframes blink-accent {
-  0%, 100% { box-shadow: 0 0 0 0 var(--quote-glow); filter: brightness(1); }
-  50% { box-shadow: 0 0 14px 6px var(--quote-glow); filter: brightness(1.06); }
+  0%, 100% {
+    box-shadow: 0 0 0 0 transparent;
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 8px 2px color-mix(in oklab, var(--quote-glow) 55%, transparent);
+    filter: brightness(1.02);
+  }
 }
 
 .blink-accent {
-  animation: blink-accent 0.75s infinite;
+  animation: blink-accent var(--blink-accent-duration, 0.35s) ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blink-accent {
+    animation: none;
+  }
 }
 @import "tailwindcss" source(none);
 @source "../src";
@@ -93,6 +105,9 @@
 }
 
 :root {
+  /* ~17px from typical 16px browser default — scales rem-based type & spacing site-wide */
+  --font-root-scale: 106.25%;
+
   --radius: 0.875rem;
 
   /* Base — warm off-white */
@@ -113,7 +128,8 @@
   --secondary-foreground: oklch(0.28 0.05 195);
 
   --muted: oklch(0.96 0.01 180);
-  --muted-foreground: oklch(0.5 0.02 200);
+  /* Darker than typical UI muted — improves paragraph scan-reading on service pages */
+  --muted-foreground: oklch(0.42 0.028 200);
 
   /* Accent — citrus lime */
   --accent: oklch(0.89 0.18 118);
@@ -122,6 +138,8 @@
 
   /* Quote CTA glow — aligned with header dropdown emerald hover */
   --quote-glow: color-mix(in oklab, var(--accent) 42%, var(--background));
+  /* Shared by every `.blink-accent` button (Hero, Header, forms, service pages, etc.) */
+  --blink-accent-duration: 0.35s;
 
   --destructive: oklch(0.6 0.22 27);
   --destructive-foreground: oklch(0.98 0.003 247);
@@ -167,7 +185,10 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    font-size: var(--font-root-scale);
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -182,6 +203,48 @@
 }
 
 @layer utilities {
+  .quote-cta-header {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--primary) 38%, var(--accent)) 0%,
+      color-mix(in oklab, var(--primary) 58%, var(--accent)) 100%
+    );
+    color: var(--primary-foreground);
+    box-shadow: 0 12px 30px -10px color-mix(in oklab, var(--primary) 50%, transparent);
+  }
+
+  .quote-cta-header:hover {
+    filter: brightness(1.06);
+  }
+
+  .quote-cta-hero {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--accent) 96%, white) 0%,
+      color-mix(in oklab, var(--accent) 78%, var(--primary)) 100%
+    );
+    color: var(--accent-foreground);
+    box-shadow: 0 16px 38px -10px color-mix(in oklab, var(--accent) 68%, transparent);
+  }
+
+  .quote-cta-hero:hover {
+    filter: brightness(1.06);
+  }
+
+  .quote-cta-form {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--accent) 88%, white) 0%,
+      color-mix(in oklab, var(--accent) 68%, var(--primary)) 100%
+    );
+    color: var(--accent-foreground);
+    box-shadow: 0 14px 34px -10px color-mix(in oklab, var(--accent) 58%, transparent);
+  }
+
+  .quote-cta-form:hover {
+    filter: brightness(1.05);
+  }
+
   .bg-gradient-hero { background: var(--gradient-hero); }
   .bg-gradient-accent { background: var(--gradient-accent); }
   .bg-gradient-glow { background: var(--gradient-glow); }

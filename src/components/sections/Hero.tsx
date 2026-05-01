@@ -34,14 +34,14 @@ export function Hero() {
               Experts
             </h1>
 
-            <p className="mt-6 max-w-xl text-base text-primary-foreground/75 md:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/88 md:text-lg">
               Professional eco-friendly steam cleaning for carpets, rugs, tiles
               & upholstery. No harsh chemicals. Bond-back guarantee for tenants.
               CCAWA member.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button asChild variant="hero" size="xl" className="blink-accent">
+              <Button asChild variant="hero" size="xl" className="blink-accent quote-cta-hero">
                 <Link to="/contact">
                   Get your free quote
                   <Sparkles className="h-4 w-4" />

@@ -1,4 +1,5 @@
 import { Check, Droplets, Wind, ShieldCheck, Sparkles } from "lucide-react";
+import { SectionHeadingBadge } from "@/components/site/SectionHeadingBadge";
 import van from "@/assets/service-van.jpg";
 
 const features = [
@@ -39,12 +40,7 @@ export function Equipment() {
       <div className="mx-auto max-w-screen-2xl px-6 lg:px-12 xl:px-16">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600/15 text-emerald-700">
-                <Sparkles className="h-3.5 w-3.5" />
-              </span>
-              Professional Equipment
-            </span>
+            <SectionHeadingBadge icon={Sparkles}>Professional equipment</SectionHeadingBadge>
             <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">
               Powered by <span className="text-gradient">Sapphire Scientific 570</span>
               <br className="hidden sm:block" /> Truck Mount
@@ -119,3 +115,4 @@ export function Equipment() {
     </section>
   );
 }
+

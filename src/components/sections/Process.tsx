@@ -1,4 +1,5 @@
 import { ClipboardList, CalendarCheck, Sparkles, ThumbsUp, ShieldCheck, Leaf, Clock } from "lucide-react";
+import { SectionHeadingBadge } from "@/components/site/SectionHeadingBadge";
 
 const steps = [
   { n: "01", icon: ClipboardList, title: "Get your free quote", desc: "Call us or fill out our quick online form. We'll be in touch shortly with a detailed, no-obligation quote." },
@@ -18,10 +19,8 @@ export function Process() {
     <section className="relative bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-screen-2xl px-6 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-            How it works
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+          <SectionHeadingBadge icon={ClipboardList}>How it works</SectionHeadingBadge>
+          <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">
             Book your clean in <span className="text-gradient">4 easy steps</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
@@ -34,16 +33,16 @@ export function Process() {
           {steps.map((s, i) => (
             <li
               key={s.n}
-              className="group relative rounded-3xl border border-border bg-gradient-card p-7 shadow-sm hover-lift"
+              className="relative rounded-3xl border border-border bg-gradient-card p-7 shadow-sm hover-lift"
             >
-              <div className="flex items-center justify-between">
-                <span className="font-display text-4xl font-bold text-accent/80">{s.n}</span>
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-primary-glow transition-transform group-hover:-rotate-6">
-                  <s.icon className="h-5 w-5" />
-                </span>
-              </div>
+              <SectionHeadingBadge
+                icon={s.icon}
+                className="px-3 py-1.5 text-xs tracking-wide"
+              >
+                Step {s.n}
+              </SectionHeadingBadge>
               <h3 className="mt-5 font-display text-lg font-bold">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
               {i < steps.length - 1 && (
                 <span className="pointer-events-none absolute -right-3 top-1/2 hidden h-px w-6 bg-border lg:block" />
               )}
@@ -55,10 +54,8 @@ export function Process() {
         <div className="mt-24 overflow-hidden rounded-[2rem] border border-border bg-gradient-hero p-8 text-primary-foreground shadow-elegant md:p-14">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-                Our promise to you
-              </p>
-              <h3 className="mt-3 font-display text-3xl font-bold md:text-4xl">
+              <SectionHeadingBadge icon={ShieldCheck} variant="dark">Our promise to you</SectionHeadingBadge>
+              <h3 className="mt-4 font-display text-3xl font-bold md:text-4xl">
                 Guarantees that give you complete peace of mind.
               </h3>
             </div>
@@ -66,13 +63,13 @@ export function Process() {
               {promises.map((p) => (
                 <li
                   key={p.title}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur"
+                  className="rounded-2xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+                  <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
                     <p.icon className="h-4 w-4" />
                   </span>
                   <h4 className="mt-4 font-display text-base font-bold">{p.title}</h4>
-                  <p className="mt-1 text-sm text-primary-foreground/70">{p.desc}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-primary-foreground/82">{p.desc}</p>
                 </li>
               ))}
             </ul>
@@ -82,3 +79,4 @@ export function Process() {
     </section>
   );
 }
+

@@ -1,16 +1,7 @@
-"use client";
-import { useRef } from "react";
 import { Link } from "@tanstack/react-router";
-import Autoplay from "embla-carousel-autoplay";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { SectionHeadingBadge } from "@/components/site/SectionHeadingBadge";
 
 const services = [
   {
@@ -58,16 +49,12 @@ const services = [
 ];
 
 export function Services() {
-  const autoplay = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
-
   return (
     <section className="relative bg-muted/40 py-24 lg:py-32">
       <div className="mx-auto max-w-screen-2xl px-6 lg:px-12 xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Our services
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">
+          <SectionHeadingBadge icon={Sparkles}>Our services</SectionHeadingBadge>
+          <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">
             Professional cleaning for{" "}
             <span className="text-gradient">every need</span>
           </h2>
@@ -77,66 +64,50 @@ export function Services() {
           </p>
         </div>
 
-        <div className="relative mt-14 px-0 md:px-14">
-          <Carousel
-            opts={{ align: "start", loop: true }}
-            plugins={[autoplay.current]}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-5">
-              {services.map((s) => (
-                <CarouselItem
-                  key={s.title}
-                  className="pl-5 sm:basis-1/2 lg:basis-1/3"
-                >
-                  <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm hover-lift">
-                    <div className="relative aspect-[5/4] overflow-hidden">
-                      <img
-                        src={s.img}
-                        alt={s.title}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      {s.popular && (
-                        <span className="absolute left-4 top-4 rounded-full bg-accent px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-accent-foreground shadow-glow">
-                          Most popular
-                        </span>
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
-                    </div>
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <article
+              key={s.title}
+              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm hover-lift"
+            >
+              <div className="relative aspect-[5/4] overflow-hidden">
+                <img
+                  src={s.img}
+                  alt={s.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                {s.popular && (
+                  <span className="absolute left-4 top-4 rounded-full bg-accent px-3 py-1 text-[0.625rem] font-bold uppercase tracking-wider text-accent-foreground shadow-glow">
+                    Most popular
+                  </span>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
+              </div>
 
-                    <div className="flex flex-1 flex-col p-6">
-                      <h3 className="font-display text-xl font-bold">
-                        {s.title}
-                      </h3>
-                      <p className="mt-2 flex-1 text-sm text-muted-foreground">
-                        {s.desc}
-                      </p>
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {s.tags.map((t) => (
-                          <span
-                            key={t}
-                            className="rounded-full border border-border bg-muted px-2.5 py-1 text-[11px] font-medium text-muted-foreground"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                      <Link
-                        to="/contact"
-                        className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground"
-                      >
-                        View service
-                        <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </Link>
-                    </div>
-                  </article>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-0 h-11 w-11 border-border bg-card text-foreground hover:bg-primary hover:text-primary-foreground md:-left-2" />
-            <CarouselNext className="right-0 h-11 w-11 border-border bg-card text-foreground hover:bg-primary hover:text-primary-foreground md:-right-2" />
-          </Carousel>
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="font-display text-xl font-bold">{s.title}</h3>
+                <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.desc}</p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {s.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-border bg-muted px-2.5 py-1 text-[0.6875rem] font-medium text-muted-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  to="/contact"
+                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground"
+                >
+                  View service
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
 
         <div className="mt-12 flex justify-center">
