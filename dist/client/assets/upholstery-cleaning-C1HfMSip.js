@@ -1,0 +1,1 @@
+import{j as o}from"./main-CqktCYhf.js";import{S as r}from"./ServicePage-DL9x9nsO.js";import"./Footer-Cl39-ZKN.js";import"./SectionHeadingBadge-BiuOuiZz.js";import"./arrow-right-Ce4DljNR.js";import"./circle-check-4V74YIJB.js";function s(){return o.jsx(r,{slug:"upholstery-cleaning"})}export{s as component};
